@@ -1,3 +1,10 @@
+"""Jittor 版 BPR-LightGCN 训练与 SciPy 版的图层传播。
+
+方法来源（仅参考论文思路，未复制上游代码）:
+    He et al., "LightGCN: Simplifying and Powering Graph Convolution
+    for Recommendation", SIGIR 2020. 许可证与来源见仓库根目录 NOTICE。
+"""
+
 from __future__ import annotations
 
 import os
