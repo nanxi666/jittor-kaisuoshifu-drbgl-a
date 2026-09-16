@@ -1,0 +1,27 @@
+# ============================================================
+# 重训门控配置：从原始数据重建验证候选并训练 base / candidate 门控
+# 用法: python scripts/train.py --config configs/train_gates.yaml
+# 命令行参数优先级高于本文件
+# ============================================================
+
+dataset: dataset2           # 门控只在 dataset2 的时间折上训练
+
+data_root: data
+model_dir: models           # 嵌于 build_feature_pair 的预训练 embedding 目录
+output_dir: outputs         # 新门控写入 <output_dir>/models/
+
+runtime:
+  seed: 20240501
+  device: auto
+  score_backend: jittor     # 训练阶段可用的打分后端（jittor / numpy）
+  epochs: 5
+  batch_size: 65536
+  learning_rate: 0.02
+  threads: 16
+  community_dim: 32
+
+sampling:
+  uniform_base: 20000       # 均匀验证集参与 base 门控的行数（每个种子）
+  strict_base: 40000        # 严格源-时间验证集参与 base 门控的行数
+  uniform_final: 40000      # 均匀验证集参与 candidate 门控的行数
+  strict_final: 60000       # 严格源-时间验证集参与 candidate 门控的行数

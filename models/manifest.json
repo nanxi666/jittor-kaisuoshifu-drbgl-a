@@ -1,0 +1,60 @@
+{
+  "leaderboard_submission": "submission.zip",
+  "leaderboard_score": 1.5186,
+  "contains_test_labels": false,
+  "graph": {
+    "users": 12708,
+    "items": 50640,
+    "edges": 2211275
+  },
+  "files": {
+    "base_cold_ranks.npz": {
+      "sha256": "c2544f96f113b940943543350b2aed5653fc1328a4249ac70221f57f6bae615f",
+      "role": "label-free base-gate cold-slot ranks with candidate fingerprint"
+    },
+    "base_gate.txt": {
+      "sha256": "569a6a1673147c6ad7bcec5537df77172550ed163bcaa03dd3cef7b316529628",
+      "role": "108-feature LambdaRank base gate"
+    },
+    "candidate_gate.txt": {
+      "sha256": "7aacda64dfc6a1935e06bebf5251cd4949ca1ab8c3cc0ba6ff2a8c39654cdf32",
+      "role": "293-feature LambdaRank candidate gate"
+    },
+    "lightgcn_d64_s42.npz": {
+      "sha256": "d7fb2dadaaad051fcf85f70c4b88e6344c681055014afa1d19399321cacd2a57",
+      "dimension": 64,
+      "seed": 42,
+      "losses": [
+        0.5027529299614586,
+        0.17753064165715668,
+        0.11145772264739447,
+        0.08200531858865988,
+        0.06762108677108863
+      ]
+    },
+    "lightgcn_d64_s2027.npz": {
+      "sha256": "4e22a27fe71cead355e9258015a4492aa014b15dddfa43efb479cbb086442012",
+      "dimension": 64,
+      "seed": 2027,
+      "losses": [
+        0.4963618966926519,
+        0.18092835643543745,
+        0.1120211317383052,
+        0.08224730386380065,
+        0.06737506349740538
+      ]
+    },
+    "lightgcn_d128_s42.npz": {
+      "sha256": "97f95e127ac2a08a8be0ecd061311b5b233b59c6214548f6e671b7c001aa7a02",
+      "dimension": 128,
+      "seed": 42,
+      "losses": [
+        0.46824731752786375,
+        0.15009088874712972,
+        0.08703745789128543,
+        0.06331925736267616,
+        0.05255788471879736
+      ]
+    }
+  }
+}

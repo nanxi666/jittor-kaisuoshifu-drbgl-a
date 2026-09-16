@@ -1,0 +1,26 @@
+# ============================================================
+# 默认推理配置：按 A 榜方案复现 dataset1 / dataset2 排序结果
+# 命令行参数优先级高于本文件（见 scripts/infer.py）
+# ============================================================
+
+dataset: both               # dataset1 / dataset2 / both
+
+data_root: data             # 数据根目录（--data-root 可覆盖）
+model_dir: models           # 检查点目录（--model-dir 可覆盖）
+output_dir: outputs         # 产物目录：CSV / zip / 日志 / 实际配置
+
+runtime:
+  seed: 20240501            # 全局随机种子（保证可复现）
+  device: auto              # Jittor 设备：auto / cpu / cuda
+  score_backend: numpy      # LightGCN 打分后端：numpy（默认，位级稳定）/ jittor
+  epochs: 5                 # BPR-LightGCN 训练轮数（仅重训时生效）
+  batch_size: 65536         # BPR 训练批大小
+  learning_rate: 0.02       # BPR 训练学习率
+  threads: 16               # 候选特征阶段的原生线程池上限
+  community_dim: 32         # 社区专家的 TruncatedSVD 维度
+  retrain_embeddings: false # 是否用 Jittor 重训 embedding
+  rebuild_base_gate: false  # 是否重算 base-gate 冷启动名次
+  # 下面三项只影响 rebuild_base_gate=true 时的线程布局
+  base_gate_openmp_threads: 191
+  base_gate_blas_threads: 64
+  base_gate_sklearn_threads: 8

@@ -1,0 +1,38 @@
+# ============ 运行产物（默认不提交） ============
+outputs/
+*.log
+
+# ============ 原始数据（不提交） ============
+data/*/*.csv
+data/*/*.zip
+data/cache/
+cache/
+
+# ============ 权重与张量 ============
+*.npz
+*.npy
+*.pkl
+*.pt
+*.pth
+*.ckpt
+
+# 例外：models/ 下的检查点用于严格复现 A 榜结果，随仓库发布（见 models/README.md）
+!models/*.npz
+!models/*.txt
+!models/*.json
+
+# ============ Python 缓存 ============
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ============ 系统 / 编辑器 ============
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,42 @@
+第三方代码、数据与模型声明
+============================
+
+本项目基于以下开源项目与数据构建，遵循相应许可证：
+
+1. Jittor（深度学习框架）
+   - 仓库: https://github.com/jittor/jittor
+   - 许可证: Apache-2.0
+   - 用途: BPR-LightGCN 嵌入的训练（``src/drbgl/experts/lightgcn.py``）与可选打分后端。
+
+2. LightGCN（方法来源）
+   - 论文: He et al., "LightGCN: Simplifying and Powering Graph Convolution
+     for Recommendation", SIGIR 2020.
+   - 说明: 本项目自行用 SciPy 稀疏算子实现均值传播
+     （``propagate_lightgcn``），未直接复制上游代码。
+
+3. LightGBM（排序学习）
+   - 仓库: https://github.com/microsoft/LightGBM
+   - 许可证: MIT
+   - 用途: base / candidate 两个 LambdaRank 门控的训练与推理。
+
+4. scikit-learn、SciPy、NumPy、pandas
+   - 许可证: BSD-3-Clause（pandas 为 BSD-3-Clause）
+   - 用途: 截断 SVD、MiniBatchKMeans、稀疏图算子与数值计算。
+
+5. PyYAML
+   - 仓库: https://github.com/yaml/pyyaml
+   - 许可证: MIT
+   - 用途: 配置文件读写。
+
+6. DRBGL 时序图链接预测数据集（dataset1 / dataset2）
+   - 来源: 计图比赛赛题方提供
+   - 说明: 原始数据不随仓库发布，请按 ``data/README.md`` 放置；
+     仅用于本次比赛任务。
+
+7. 随仓库发布的检查点（``models/``）
+   - 来源: 由本仓库 ``scripts/train.py`` 与 ``scripts/infer.py --retrain-embeddings``
+     训练得到，sha256 见 ``models/manifest.json``。
+   - 许可证: 与本项目一致（MIT），不含测试集标签。
+
+注意: 本项目未使用 JittorGeometric，图卷积部分由本仓库自行实现；
+如引用本项目，请同时标注上述第三方来源。

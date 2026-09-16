@@ -1,0 +1,26 @@
+# ============================================================
+# 重训配置：用 Jittor 从原始数据重训 BPR-LightGCN embedding 后推理
+# 用法: python scripts/infer.py --config configs/retrain.yaml --device cuda
+# 命令行参数优先级高于本文件
+# ============================================================
+
+dataset: both
+
+data_root: data
+model_dir: models           # 仍然需要 base_gate.txt / candidate_gate.txt
+output_dir: outputs/retrain # 重训得到的 embedding 会写到该目录的 models/ 下
+
+runtime:
+  seed: 20240501
+  device: cuda              # 无 GPU 时改为 cpu
+  score_backend: numpy
+  epochs: 5
+  batch_size: 65536
+  learning_rate: 0.02
+  threads: 16
+  community_dim: 32
+  retrain_embeddings: true  # 关键开关：用 Jittor 重训三份 embedding
+  rebuild_base_gate: false
+  base_gate_openmp_threads: 191
+  base_gate_blas_threads: 64
+  base_gate_sklearn_threads: 8

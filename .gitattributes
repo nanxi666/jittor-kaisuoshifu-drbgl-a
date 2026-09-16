@@ -1,0 +1,9 @@
+# 统一换行符，避免 Windows / Linux 之间的 diff 抖动
+* text=auto eol=lf
+
+# 二进制资产（检查点）
+*.npz binary
+*.npy binary
+*.pkl binary
+*.pt binary
+*.zip binary
